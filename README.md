@@ -13,5 +13,5 @@ Escape from Oneway is escaping game from mysterious road called _Oneway_. So far
  * Unity 2021 (2021.1.15f1)
 
 ## Authors
- * Park, Jonghyeon - [@ShapeLayer](https://github.com/ShapeLayer)
- * Park, Hyeonsoo
+ * Park, Jonghyeon - [@ShapeLayer](https://github.com/ShapeLayer)  
+ * Park, Hyeonsoo - [@PHS00](https://github.com/PHS00)  
