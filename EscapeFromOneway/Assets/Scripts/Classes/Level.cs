@@ -6,7 +6,7 @@ public class Level
 {
     public string type;
     public LevelConfig config;
-    public int[] path;
+    public List<int> path;
     public int length;
 }
 

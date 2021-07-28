@@ -7,7 +7,7 @@ Level data is used for constructing a ingame level.
 | :-: | --- |
 | `type` | `str` Type of level. |
 | `config` | [`config`](#Configuration) Configuration for map constructing. |
-| `path` | `int[]` Blocktile Paths arranged in order. |
+| `path` | `int[]` Blocktile Paths arranged in order. _[Detail Information](#Path)_ |
 | `length` | `int` Length of map blocktile path. |
 | `resource` | `TBD` Resource of map. |
 
@@ -60,3 +60,13 @@ class Follower: HumanEntity
 | Params | Details |
 | ... | `HumanEntity` |
 | `speed` | `float` Following speed of following player. |
+
+### Path
+`Path` is `List` of `int` value.  
+
+| Value | Direction |
+| :-: | --- |
+| `0` | Forward |
+| `1` | Right |
+| `2` | Left |
+| `3` | Backward |
