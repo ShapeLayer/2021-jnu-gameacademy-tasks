@@ -13,6 +13,7 @@ public class IngameDataManager : MonoBehaviour
     public List<string> levelIndex;
     public string levelID;
     public Level level;
+    public Character Character;
 
     private void Awake()
     {
@@ -33,7 +34,6 @@ public class IngameDataManager : MonoBehaviour
         level = PresetController.LoadJsonToObject(
             Path.Combine(PathVariables.LevelDir, $"{levelID}.json")
         ).ToObject<Level>();
-        print(level.type);
     }
     public void LoadLevel(string LevelID) { levelID = LevelID; LoadLevel(); }
 
