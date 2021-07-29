@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level : MonoBehaviour
+[System.Serializable]
+public class Level
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string type;
+    public LevelConfig config;
+    public List<int> path;
+    public int length;
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public class LevelConfig
+{
 }
