@@ -10,8 +10,8 @@ public class PlayerMove : MonoBehaviour
 
     // SpriteRenderer sc = Transform.GetComponent<SpriteRenderer>();
 
-    SpriteRenderer spriteR = gameObject.GetComponent<SpriteRenderer>();
-    Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/Player/charcter_idle");
+    //SpriteRenderer spriteR = gameObject.GetComponent<SpriteRenderer>();
+    //Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/Player/charcter_idle");
 
 
     void Start()
@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour
         {
             tr.position = new Vector2(tr.position.x - 3, tr.position.y);
             //sc = (Sprite)Resources.Load("idle_21", typeof(Sprite));
-            spriteR.sprite = sprites[21];
+            //spriteR.sprite = sprites[21];
         }
         if (Input.GetKeyDown("up"))
         {
