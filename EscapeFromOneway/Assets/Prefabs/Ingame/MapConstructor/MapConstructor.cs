@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,14 +31,9 @@ public class MapConstructor : MonoBehaviour
             int val;
             do
             {
-                if (CanGenBackwardPath) val = Random.Range(0, 4);
-                else val = Random.Range(0, 3);
-            } while (
-                (val == 0 && pathGen[i-1] == 3) ||
-                (val == 1 && pathGen[i-1] == 2) ||
-                (val == 2 && pathGen[i-1] == 1) ||
-                (val == 3 && pathGen[i-1] == 0)
-            );
+                if (CanGenBackwardPath) val = UnityEngine.Random.Range(0, 4);
+                else val = UnityEngine.Random.Range(0, 3);
+            } while (Math.Abs(val - pathGen[i-1]) == 2);
             pathGen.Add(val);
         }
         return pathGen;
@@ -45,7 +41,7 @@ public class MapConstructor : MonoBehaviour
     [ContextMenu("Debug Generate Path")]
     public void DebugGeneratePath() 
     {
-        foreach (var p in GeneratePath(10))
+        foreach (var p in GeneratePath(10, true))
         {
             print(p);
         }
@@ -60,8 +56,8 @@ public class MapConstructor : MonoBehaviour
         {
             if (tile == 0) ConstructPointer[1]++;  // Forward
             else if (tile == 1) ConstructPointer[0]++; // Right
-            else if (tile == 2) ConstructPointer[0]--; // Left
-            else if (tile == 3) ConstructPointer[1]--; // Backward
+            else if (tile == 2) ConstructPointer[1]--; // Backward
+            else if (tile == 3) ConstructPointer[0]--; // Left
             GameObject newObject = Instantiate(MapTilePrefab) as GameObject;
             newObject.GetComponent<Transform>().position = new Vector2(
                 ConstructPointer[0] * ConstructOffset[0], ConstructPointer[1] * ConstructOffset[1]
