@@ -68,7 +68,7 @@ class Follower: HumanEntity
 | :-: | --- |
 | `0` | Forward |
 | `1` | Right |
-| `2` | Left |
-| `3` | Backward |
+| `2` | Backward |
+| `3` | Left |
 
- * Moving one block and returning to the original block is unintuitive and is not recommended. (example: `[0, 3]`(Forward and Backward) or `[1, 2]`(Right, Left).)
+ * Moving one block and returning to the original block is unintuitive and is not recommended. (example: `[0, 2]`(Forward and Backward) or `[1, 3]`(Right, Left).)
