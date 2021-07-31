@@ -59,7 +59,6 @@ public class UserDataManager : MonoBehaviour
     [ContextMenu("Debug Load User Data from Binary Storage")]
     void DebugLoadUserDataFromBinaryStorage() { LoadUserDataFromBinaryStorage(); }
 
-
     [ContextMenu("Debug Add Unlocked Characters")]
     void DebugAddUnlockedCharacters() { UserData.AddUnlockedCharacter("Dino"); }
 
