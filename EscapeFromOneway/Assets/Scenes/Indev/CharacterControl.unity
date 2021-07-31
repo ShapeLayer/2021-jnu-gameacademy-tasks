@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UserData:
-    UserName: 
+    UserName: ShapeLayer
     UnlockedCharacters: []
     ClearedStages: []
     InfinityHighest:

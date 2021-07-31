@@ -11,8 +11,6 @@ public class UserData
     public List<string> UnlockedCharacters;
     public List<string> ClearedStages;
     public InfinityScore InfinityHighest;
-    public static bool CheckBinaryStorageIsExisted() { return File.Exists(PathVariables.UserDataBinaryStorage); }
-    public static void InitializeBinaryStorage() { if (!CheckBinaryStorageIsExisted()) File.Create(PathVariables.UserDataBinaryStorage); }
     public void AddUnlockedCharacter(string id) { UnlockedCharacters.Add(id); }
     public void RemoveUnlockedCharacter(string id) { UnlockedCharacters.Remove(id); }
     public void AddClearedStage(string id) { ClearedStages.Add(id); }
