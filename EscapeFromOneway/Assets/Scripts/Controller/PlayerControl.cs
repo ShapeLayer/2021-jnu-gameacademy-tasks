@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerControl : MonoBehaviour
 {
 
     Transform tr;
     Animator animator;
 
     public float speed;
-    public Sprite Forward;
-    public Sprite Backward;
-    public Sprite Left;
 
     int direction = 1000000;
+
+    bool IsPause;
+
+    bool isGround;
+    public Transform groundCheck;
+    public LayerMask groundlayer;
 
     void Start()
     {
@@ -22,15 +25,14 @@ public class PlayerMove : MonoBehaviour
 
         animator = GetComponent<Animator>();
 
+        IsPause = false;
+
+        LoadSceneAdditive();
 
     }
 
     void Update()
     {
-
-        // animator.SetTrigger("Left");
-        // animator.SetTrigger("Forward");
-        //animator.SetTrigger("Backward");
 
         if (Input.GetKeyDown("up")) //윗방향키 입력
         {
@@ -52,10 +54,7 @@ public class PlayerMove : MonoBehaviour
                 transform.localScale = new Vector3(1, 1, 1);
                 tr.position = new Vector2(tr.position.x - 3, tr.position.y);
             }
-            //yield return new WaitForSeconds(0.3f);
-            //animator.SetInteger("Forward", 5);
-
-            // animator.SetTrigger("Forward");
+     
         }
 
 
@@ -106,11 +105,34 @@ public class PlayerMove : MonoBehaviour
                 transform.localScale = new Vector3( 1, 1, 1);
                 tr.position = new Vector2(tr.position.x - 3, tr.position.y);
             }
-           // animator.SetTrigger("Left");
 
         }
 
         animator.SetInteger("direction", direction % 4);
+
+        if (isGround)
+        {
+            Time.timeScale = 1;
+            IsPause = false;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            IsPause = true;
+            SceneManager.LoadScene("StageResultUI");
+        }
+
+
+    }
+
+    private void FixedUpdate()
+    {
+        isGround = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundlayer);
+    }
+
+    void LoadSceneAdditive()
+    {
+        SceneManager.LoadScene("StageIngameUI", LoadSceneMode.Additive);
     }
 
     void animatorChange()
@@ -139,4 +161,18 @@ public class PlayerMove : MonoBehaviour
             }
     }
     */
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Ground"))
+        {
+            Time.timeScale = 1;
+            IsPause = false;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            IsPause = true;
+        }
+    }
 }
