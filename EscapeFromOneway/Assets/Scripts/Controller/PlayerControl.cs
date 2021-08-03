@@ -27,7 +27,10 @@ public class PlayerControl : MonoBehaviour
 
         IsPause = false;
 
+        isGround = true;
+
         LoadSceneAdditive();
+
         Time.timeScale = 1;
     }
 
@@ -109,7 +112,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         animator.SetInteger("direction", direction % 4);
-
+        /*
         if (isGround)
         {
             Time.timeScale = 1;
@@ -120,8 +123,9 @@ public class PlayerControl : MonoBehaviour
             Time.timeScale = 0;
             IsPause = true;
             SceneManager.LoadScene("StageResultUI");
+            isGround = false;
         }
-
+        */
 
 
     }
@@ -162,7 +166,7 @@ public class PlayerControl : MonoBehaviour
             }
     }
     */
-
+    /*
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Ground"))
@@ -175,5 +179,5 @@ public class PlayerControl : MonoBehaviour
             Time.timeScale = 0;
             IsPause = true;
         }
-    }
+    }*/
 }
