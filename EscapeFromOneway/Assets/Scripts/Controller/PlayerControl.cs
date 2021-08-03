@@ -28,7 +28,7 @@ public class PlayerControl : MonoBehaviour
         IsPause = false;
 
         LoadSceneAdditive();
-
+        Time.timeScale = 1;
     }
 
     void Update()
@@ -121,6 +121,7 @@ public class PlayerControl : MonoBehaviour
             IsPause = true;
             SceneManager.LoadScene("StageResultUI");
         }
+
 
 
     }
