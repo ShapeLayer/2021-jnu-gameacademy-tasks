@@ -112,7 +112,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         animator.SetInteger("direction", direction % 4);
-        /*
+        
         if (isGround)
         {
             Time.timeScale = 1;
@@ -125,7 +125,7 @@ public class PlayerControl : MonoBehaviour
             SceneManager.LoadScene("StageResultUI");
             isGround = false;
         }
-        */
+        
 
 
     }
