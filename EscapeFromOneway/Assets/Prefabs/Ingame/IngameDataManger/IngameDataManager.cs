@@ -10,7 +10,6 @@ public class IngameDataManager : MonoBehaviour
     /// </summary>
     public static IngameDataManager instance = null;
     
-    public List<string> levelIndex;
     public string levelID;
     public Level level;
     public Character Character;
@@ -26,8 +25,6 @@ public class IngameDataManager : MonoBehaviour
     public void SetLevelID(string LevelID) { levelID = LevelID; }
     public string GetLevelID() { return levelID; }
 
-    public void LoadLevelIndex() { levelIndex = PresetController.LoadJsonToArray(PathVariables.LevelIndex).ToObject<List<string>>(); }
-
     public void SetLevel(Level Level) { level = Level; }
     public void LoadLevel()
     {
@@ -38,6 +35,5 @@ public class IngameDataManager : MonoBehaviour
     public void LoadLevel(string LevelID) { levelID = LevelID; LoadLevel(); }
 
     [ContextMenu("DebugSetLevelID")] public void DebugSetLevelID() { SetLevelID("1"); }
-    [ContextMenu("DebugLoadLevelIndex")] public void DebugLoadLevelIndex() { LoadLevelIndex(); }
     [ContextMenu("DebugLoadLevel")] public void DebugLoadLevel() { LoadLevel("1"); }
 }
