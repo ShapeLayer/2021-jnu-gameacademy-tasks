@@ -472,6 +472,10 @@ PrefabInstance:
       value: StageLoadManager
       objectReference: {fileID: 0}
     - target: {fileID: 5178549597571596131, guid: 26e5d3ad0b08d446697930fa53555735, type: 3}
+      propertyPath: BlueButton
+      value: 
+      objectReference: {fileID: 6265962863205248574, guid: 7af360bc8a9bb4283b6be200a0bb4870, type: 3}
+    - target: {fileID: 5178549597571596131, guid: 26e5d3ad0b08d446697930fa53555735, type: 3}
       propertyPath: BaseParentPanel
       value: 
       objectReference: {fileID: 5044770343951075466, guid: 8000ecb3b584e470098b6f6d3bec5687, type: 3}

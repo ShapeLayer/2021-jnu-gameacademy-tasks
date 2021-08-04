@@ -26,6 +26,7 @@ public class StageLoadManager : MonoBehaviour
         ClearedStages = UserDataManager.instance.UserData.ClearedStages;
         InstantiateParents();
         ConstructBaseButtons();
+        ConstructStageButtons();
     }
 
     public void LoadLevelIndex() { levelIndex = PresetController.LoadJsonToArray(PathVariables.LevelIndex).ToObject<List<string>>(); }
@@ -105,8 +106,8 @@ public class StageLoadManager : MonoBehaviour
             RectVariables.BottomRight
         );
     }
-    [ContextMenu("ConstructStageButton")]
-    public void ConstructStageButton()
+    [ContextMenu("ConstructStageButtons")]
+    public void ConstructStageButtons()
     {
         scenePaginatorIndex[1] = (int)Math.Ceiling(((float)levelIndex.Count/9));
         for (
@@ -115,60 +116,62 @@ public class StageLoadManager : MonoBehaviour
             i++
         )
         {
-            if (i % 9 == 1) InstantiateButton(BlueButton, "Stages", new Vector3(
+            GameObject newObject = new GameObject();
+            if (i % 9 == 1) newObject = InstantiateButton(BlueButton, "Stages", new Vector3(
                 StageConstructorConfig.ButtonMargin,
                 (StageConstructorConfig.ButtonMargin * 2 + StageConstructorConfig.ButtonSize) * -1,
                 0),
                 RectVariables.TopLeft
             );
-            else if (i % 9 == 2) InstantiateButton(BlueButton, "Stages", new Vector3(
+            else if (i % 9 == 2) newObject = InstantiateButton(BlueButton, "Stages", new Vector3(
                 0,
                 (StageConstructorConfig.ButtonMargin * 2 + StageConstructorConfig.ButtonSize) * -1,
                 0),
                 RectVariables.TopCenter
             );
-            else if (i % 9 == 3) InstantiateButton(BlueButton, "Stages", new Vector3(
+            else if (i % 9 == 3) newObject = InstantiateButton(BlueButton, "Stages", new Vector3(
                 StageConstructorConfig.ButtonMargin * -1,
                 (StageConstructorConfig.ButtonMargin * 2 + StageConstructorConfig.ButtonSize) * -1,
                 0),
                 RectVariables.TopRight
             );
-            else if (i % 9 == 4) InstantiateButton(BlueButton, "Stages", new Vector3(
+            else if (i % 9 == 4) newObject = InstantiateButton(BlueButton, "Stages", new Vector3(
                 StageConstructorConfig.ButtonMargin,
                 0,
                 0),
                 RectVariables.MiddleLeft
             );
-            else if (i % 9 == 5) InstantiateButton(BlueButton, "Stages", new Vector3(
+            else if (i % 9 == 5) newObject = InstantiateButton(BlueButton, "Stages", new Vector3(
                 0,
                 0,
                 0),
                 RectVariables.MiddleCenter
             );
-            else if (i % 9 == 6) InstantiateButton(BlueButton, "Stages", new Vector3(
+            else if (i % 9 == 6) newObject = InstantiateButton(BlueButton, "Stages", new Vector3(
                 StageConstructorConfig.ButtonMargin * -1,
                 0,
                 0),
                 RectVariables.MiddleRight
             );
-            else if (i % 9 == 7) InstantiateButton(BlueButton, "Stages", new Vector3(
+            else if (i % 9 == 7) newObject = InstantiateButton(BlueButton, "Stages", new Vector3(
                 StageConstructorConfig.ButtonMargin,
                 StageConstructorConfig.ButtonMargin * 2 + StageConstructorConfig.ButtonSize,
                 0),
                 RectVariables.BottomLeft
             );
-            else if (i % 9 == 8) InstantiateButton(BlueButton, "Stages", new Vector3(
+            else if (i % 9 == 8) newObject = InstantiateButton(BlueButton, "Stages", new Vector3(
                 0,
                 StageConstructorConfig.ButtonMargin * 2 + StageConstructorConfig.ButtonSize,
                 0),
                 RectVariables.BottomCenter
             );
-            else if (i % 9 == 0) InstantiateButton(BlueButton, "Stages", new Vector3(
+            else if (i % 9 == 0) newObject = InstantiateButton(BlueButton, "Stages", new Vector3(
                 StageConstructorConfig.ButtonMargin * -1,
                 StageConstructorConfig.ButtonMargin * 2 + StageConstructorConfig.ButtonSize,
                 0),
                 RectVariables.BottomRight
             );
+            newObject.GetComponent<SpecificStageButtonController>().Text.text = levelIndex[i-1];
         }
     }
     [ContextMenu("ConstructBaseButton")]
