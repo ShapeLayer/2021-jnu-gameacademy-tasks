@@ -145,7 +145,8 @@ public class ChangeScene : MonoBehaviour
         switch (this.gameObject.name)
         {
             case "Stage1Button":
-                SceneManager.LoadScene("StageIngameUI");
+                SceneManager.LoadScene("CharacterControl");
+                //SceneManager.LoadScene("StageIngameUI");
                 break;
             case "Stage2Button":
                 SceneManager.LoadScene("StageIngameUI");
@@ -153,6 +154,7 @@ public class ChangeScene : MonoBehaviour
             case "Stage3Button":
                 SceneManager.LoadScene("StageIngameUI");
                 break;
+            
         }
     }
 
