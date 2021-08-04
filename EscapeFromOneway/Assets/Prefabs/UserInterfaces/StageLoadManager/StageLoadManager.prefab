@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelIndex: []
-  scenePaginatorIndex: 
+  scenePaginatorIndex: 0100000001000000
   BlueButton: {fileID: 4764742914800243499, guid: 4acba6b9a9b64ac409107301e0803c1a, type: 3}
   BlueLockButton: {fileID: 0}
   BlueHomeButton: {fileID: 4380562741550187877, guid: 1b912b9d53affe74e964edb65563f394, type: 3}

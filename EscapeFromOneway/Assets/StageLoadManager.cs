@@ -12,6 +12,8 @@ public class StageLoadManager : MonoBehaviour
     public int[] scenePaginatorIndex = {1, 1}; // Current, Total
 
     // Prefab Resources
+    public GameObject BaseParentPanel;
+    public GameObject StagesParentPanel;
     public GameObject BlueButton;
     public GameObject BlueLockButton;
     public GameObject BlueHomeButton;
@@ -22,21 +24,46 @@ public class StageLoadManager : MonoBehaviour
         LoadLevelIndex();
         UnlockedStages = UserDataManager.instance.UserData.UnlockedStages;
         ClearedStages = UserDataManager.instance.UserData.ClearedStages;
+        InstantiateParents();
+        ConstructBaseButtons();
     }
 
     public void LoadLevelIndex() { levelIndex = PresetController.LoadJsonToArray(PathVariables.LevelIndex).ToObject<List<string>>(); }
     [ContextMenu("DebugLoadLevelIndex")] public void DebugLoadLevelIndex() { LoadLevelIndex(); }
     
-    public void ClearChild(string ObjectName)
+    public void RegenParent(string type)
     {
-        GameObject GameObject = GameObject.Find(ObjectName);
-        foreach (Transform child in GameObject.GetComponentsInChildren<Transform>())
+        if (type == "base")
         {
-            Destroy(child.gameObject);
+            Destroy(GameObject.Find("Base"));
+            InstantiateParent(BaseParentPanel);
+        }
+        else if (type == "stages")
+        {
+            Destroy(GameObject.Find("Stages"));
+            InstantiateParent(StagesParentPanel);
         }
     }
-    [ContextMenu("Debug Clear Child")]
-    public void DebugClearChild() {ClearChild("Stages");}
+    [ContextMenu("DebugRegenParent")] public void DebugRegenParent() { RegenParent("base"); }
+
+    void InstantiateParent(GameObject GameObject)
+    {
+        GameObject newObject = Instantiate(GameObject) as GameObject;
+        newObject.transform.SetParent(GameObject.Find("Panel").transform);
+        newObject.name = newObject.name.Replace("(Clone)", "");
+    }
+
+    [ContextMenu(("DebugInstantiateParents"))]
+    void InstantiateParents()
+    {
+        List<GameObject> Parents = new List<GameObject>();
+        Parents.Add(BaseParentPanel);
+        Parents.Add(StagesParentPanel);
+        foreach (GameObject Parent in Parents)
+        {
+            InstantiateParent(Parent);
+        }
+    }
 
     GameObject InstantiateButton(GameObject GameObject, string ParentObjectName, Vector3 Position, RectAnchors RectAnchors, Vector3 Scale = default(Vector3))
     {
@@ -53,8 +80,8 @@ public class StageLoadManager : MonoBehaviour
         return newObject;
     }
 
-    void ConstructBaseButton() { ConstructBaseButton(true, true, true); }
-    void ConstructBaseButton(bool home, bool left, bool right)
+    void ConstructBaseButtons() { ConstructBaseButtons(true, true, true); }
+    void ConstructBaseButtons(bool home, bool left, bool right)
     {
         if (home) InstantiateButton(
             BlueHomeButton, "Base", new Vector3(
@@ -81,7 +108,7 @@ public class StageLoadManager : MonoBehaviour
     [ContextMenu("ConstructStageButton")]
     public void ConstructStageButton()
     {
-        scenePaginatorIndex[1] = (int)Math.Ceiling((double)((levelIndex.Count)/9));
+        scenePaginatorIndex[1] = (int)Math.Ceiling(((float)levelIndex.Count/9));
         for (
             int i = (scenePaginatorIndex[0]-1)*9+1;
             scenePaginatorIndex[0]*9 > levelIndex.Count ? i <= levelIndex.Count : i <= scenePaginatorIndex[0]*9;
@@ -145,5 +172,5 @@ public class StageLoadManager : MonoBehaviour
         }
     }
     [ContextMenu("ConstructBaseButton")]
-    public void DebugConstructBaseButton() {ConstructBaseButton();}
+    public void DebugConstructBaseButtons() {ConstructBaseButtons();}
 }
