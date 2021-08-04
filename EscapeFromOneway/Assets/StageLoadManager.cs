@@ -27,11 +27,22 @@ public class StageLoadManager : MonoBehaviour
     public void LoadLevelIndex() { levelIndex = PresetController.LoadJsonToArray(PathVariables.LevelIndex).ToObject<List<string>>(); }
     [ContextMenu("DebugLoadLevelIndex")] public void DebugLoadLevelIndex() { LoadLevelIndex(); }
     
-    GameObject InstantiateButton(GameObject GameObject, Vector3 Position, RectAnchors RectAnchors, Vector3 Scale = default(Vector3))
+    public void ClearChild(string ObjectName)
+    {
+        GameObject GameObject = GameObject.Find(ObjectName);
+        foreach (Transform child in GameObject.GetComponentsInChildren<Transform>())
+        {
+            Destroy(child.gameObject);
+        }
+    }
+    [ContextMenu("Debug Clear Child")]
+    public void DebugClearChild() {ClearChild("Stages");}
+
+    GameObject InstantiateButton(GameObject GameObject, string ParentObjectName, Vector3 Position, RectAnchors RectAnchors, Vector3 Scale = default(Vector3))
     {
         GameObject newObject = Instantiate(GameObject) as GameObject;
         RectTransform Rect = newObject.GetComponent<RectTransform>();
-        newObject.transform.SetParent(GameObject.Find("Base").transform);
+        newObject.transform.SetParent(GameObject.Find(ParentObjectName).transform);
         Rect.anchorMin = RectAnchors.anchorMin;
         Rect.anchorMax = RectAnchors.anchorMax;
         Rect.pivot = RectAnchors.pivot;
@@ -46,25 +57,25 @@ public class StageLoadManager : MonoBehaviour
     void ConstructBaseButton(bool home, bool left, bool right)
     {
         if (home) InstantiateButton(
-            BlueHomeButton, new Vector3(
+            BlueHomeButton, "Base", new Vector3(
                 StageConstructorConfig.ButtonMargin,
                 StageConstructorConfig.ButtonMargin * -1,
                 0),
             RectVariables.TopLeft
         );
         if (left) InstantiateButton(
-            BlueForwardButton, new Vector3(
-                StageConstructorConfig.ButtonMargin, 
+            BlueForwardButton, "Base", new Vector3(
+                StageConstructorConfig.ButtonMargin + StageConstructorConfig.ButtonSize, 
                 StageConstructorConfig.ButtonMargin,
                 0),
-            RectVariables.BottomLeft
+            RectVariables.BottomLeft, new Vector3(-1, 1, 1)
         );
         if (right) InstantiateButton(
-            BlueForwardButton, new Vector3(
-                (StageConstructorConfig.ButtonMargin + StageConstructorConfig.ButtonSize) * -1,
+            BlueForwardButton, "Base", new Vector3(
+                StageConstructorConfig.ButtonMargin * -1,
                 StageConstructorConfig.ButtonMargin, 
                 0), 
-            RectVariables.BottomRight, new Vector3(-1, 1, 1)
+            RectVariables.BottomRight
         );
     }
     [ContextMenu("ConstructStageButton")]
@@ -77,55 +88,55 @@ public class StageLoadManager : MonoBehaviour
             i++
         )
         {
-            if (i % 9 == 1) InstantiateButton(BlueButton, new Vector3(
+            if (i % 9 == 1) InstantiateButton(BlueButton, "Stages", new Vector3(
                 StageConstructorConfig.ButtonMargin,
                 (StageConstructorConfig.ButtonMargin * 2 + StageConstructorConfig.ButtonSize) * -1,
                 0),
                 RectVariables.TopLeft
             );
-            else if (i % 9 == 2) InstantiateButton(BlueButton, new Vector3(
+            else if (i % 9 == 2) InstantiateButton(BlueButton, "Stages", new Vector3(
                 0,
                 (StageConstructorConfig.ButtonMargin * 2 + StageConstructorConfig.ButtonSize) * -1,
                 0),
                 RectVariables.TopCenter
             );
-            else if (i % 9 == 3) InstantiateButton(BlueButton, new Vector3(
+            else if (i % 9 == 3) InstantiateButton(BlueButton, "Stages", new Vector3(
                 StageConstructorConfig.ButtonMargin * -1,
                 (StageConstructorConfig.ButtonMargin * 2 + StageConstructorConfig.ButtonSize) * -1,
                 0),
                 RectVariables.TopRight
             );
-            else if (i % 9 == 4) InstantiateButton(BlueButton, new Vector3(
+            else if (i % 9 == 4) InstantiateButton(BlueButton, "Stages", new Vector3(
                 StageConstructorConfig.ButtonMargin,
                 0,
                 0),
                 RectVariables.MiddleLeft
             );
-            else if (i % 9 == 5) InstantiateButton(BlueButton, new Vector3(
+            else if (i % 9 == 5) InstantiateButton(BlueButton, "Stages", new Vector3(
                 0,
                 0,
                 0),
                 RectVariables.MiddleCenter
             );
-            else if (i % 9 == 6) InstantiateButton(BlueButton, new Vector3(
+            else if (i % 9 == 6) InstantiateButton(BlueButton, "Stages", new Vector3(
                 StageConstructorConfig.ButtonMargin * -1,
                 0,
                 0),
                 RectVariables.MiddleRight
             );
-            else if (i % 9 == 7) InstantiateButton(BlueButton, new Vector3(
+            else if (i % 9 == 7) InstantiateButton(BlueButton, "Stages", new Vector3(
                 StageConstructorConfig.ButtonMargin,
                 StageConstructorConfig.ButtonMargin * 2 + StageConstructorConfig.ButtonSize,
                 0),
                 RectVariables.BottomLeft
             );
-            else if (i % 9 == 8) InstantiateButton(BlueButton, new Vector3(
+            else if (i % 9 == 8) InstantiateButton(BlueButton, "Stages", new Vector3(
                 0,
                 StageConstructorConfig.ButtonMargin * 2 + StageConstructorConfig.ButtonSize,
                 0),
                 RectVariables.BottomCenter
             );
-            else if (i % 9 == 0) InstantiateButton(BlueButton, new Vector3(
+            else if (i % 9 == 0) InstantiateButton(BlueButton, "Stages", new Vector3(
                 StageConstructorConfig.ButtonMargin * -1,
                 StageConstructorConfig.ButtonMargin * 2 + StageConstructorConfig.ButtonSize,
                 0),
