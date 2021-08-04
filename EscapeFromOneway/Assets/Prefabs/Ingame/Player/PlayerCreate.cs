@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerCreate : MonoBehaviour
 {
-    public GameObject PlayerPrefab;
+    public GameObject PlayerPrefabDino;
+    public GameObject PlayerPrefabSquirrel;
 
     void Start()
     {
@@ -20,7 +21,15 @@ public class PlayerCreate : MonoBehaviour
 
     public void CreatePlayer()
     {
-        GameObject newObject = Instantiate(PlayerPrefab) as GameObject;
-        newObject.GetComponent<Transform>().position = new Vector2(0, 0);
+        if (GameManager.instance.CharacterSelect == "Dino")
+        {
+            GameObject PlayerDino = Instantiate(PlayerPrefabDino) as GameObject;
+            PlayerDino.GetComponent<Transform>().position = new Vector2(0, 0);
+        }
+        else if (GameManager.instance.CharacterSelect == "Squirrel")
+        {
+            GameObject PlayerSquirrel = Instantiate(PlayerPrefabSquirrel) as GameObject;
+            PlayerSquirrel.GetComponent<Transform>().position = new Vector2(0, 0);
+        }
     }
 }
