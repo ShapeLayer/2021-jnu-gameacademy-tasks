@@ -1592,7 +1592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4918614330627866305, guid: 6b6c0b427dc9a4f2d8790231b0a1735b, type: 3}
       propertyPath: m_Name
-      value: DataManager
+      value: IngameDataManager
       objectReference: {fileID: 0}
     - target: {fileID: 4918614330627866335, guid: 6b6c0b427dc9a4f2d8790231b0a1735b, type: 3}
       propertyPath: levelID
@@ -1762,7 +1762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5769637367863877910, guid: 0529222e4b3c842fbadc34429e3dc4a5, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5769637367863877910, guid: 0529222e4b3c842fbadc34429e3dc4a5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1884,7 +1884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6353448302414152234, guid: 574ec8f4d43ab418aa1963d1c60de571, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6353448302414152234, guid: 574ec8f4d43ab418aa1963d1c60de571, type: 3}
       propertyPath: m_LocalPosition.x
