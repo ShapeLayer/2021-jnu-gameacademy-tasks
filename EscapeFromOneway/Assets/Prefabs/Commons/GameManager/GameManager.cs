@@ -18,4 +18,6 @@ public class GameManager : MonoBehaviour
         else if (instance != this) Destroy(this.gameObject);
         DontDestroyOnLoad(this.gameObject);
     }
+
+    public string CharacterSelect = "Dino";
 }
