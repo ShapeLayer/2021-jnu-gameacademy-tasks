@@ -9,6 +9,7 @@ public class UserData
 {
     public string UserName;
     public List<string> UnlockedCharacters;
+    public List<string> UnlockedStages;
     public List<string> ClearedStages;
     public InfinityScore InfinityHighest;
     public void AddUnlockedCharacter(string id) { UnlockedCharacters.Add(id); }

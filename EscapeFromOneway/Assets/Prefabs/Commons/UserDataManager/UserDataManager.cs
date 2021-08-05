@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 
 public class UserDataManager : MonoBehaviour
 {
+    public static UserDataManager instance = null;
     public UserData UserData;
 
     public bool CheckBinaryStorageIsExisted() { return File.Exists(PathVariables.UserDataBinaryStorage); }
@@ -41,11 +42,13 @@ public class UserDataManager : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
         InitializeBinaryStorage();
     }
-    void Update() {}
 
     /* 
         Methods bound with ContextMenu.
