@@ -17,7 +17,7 @@ Escape from Oneway is escaping game from mysterious road called _Oneway_. So far
  * Park, Hyeonsoo - [@PHS00](https://github.com/PHS00)  
 
 ## External Projects / Assets
-External projects and assets are stored under `Assets/Packages` folder. But assets released at asset store are not included in this repository. ([How to import](./docs/guide/how-to-install-unity-packages.md))  
+External projects and assets are stored under `Assets/Packages` folder. But assets released at asset store are not included in this repository. 
 
 This repository includes below:
  * UhBee EUN KYUNG - UhBee - [License](http://uhbeefont.com)
