@@ -293,11 +293,23 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4868311043206114301, guid: 4acba6b9a9b64ac409107301e0803c1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868311043206114301, guid: 4acba6b9a9b64ac409107301e0803c1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 155708662}
     - target: {fileID: 4868311043206114301, guid: 4acba6b9a9b64ac409107301e0803c1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 885291785}
+    - target: {fileID: 4868311043206114301, guid: 4acba6b9a9b64ac409107301e0803c1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868311043206114301, guid: 4acba6b9a9b64ac409107301e0803c1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4868311043206114301, guid: 4acba6b9a9b64ac409107301e0803c1a, type: 3}
@@ -305,12 +317,24 @@ PrefabInstance:
       value: ChangeSceneStagePauseMenuBtn
       objectReference: {fileID: 0}
     - target: {fileID: 4868311043206114301, guid: 4acba6b9a9b64ac409107301e0803c1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868311043206114301, guid: 4acba6b9a9b64ac409107301e0803c1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChangeScene, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868311043206114301, guid: 4acba6b9a9b64ac409107301e0803c1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: ChangeScene, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4868311043206114301, guid: 4acba6b9a9b64ac409107301e0803c1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4868311043206114301, guid: 4acba6b9a9b64ac409107301e0803c1a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4acba6b9a9b64ac409107301e0803c1a, type: 3}
@@ -662,7 +686,7 @@ GameObject:
   - component: {fileID: 709200893}
   - component: {fileID: 709200892}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: PauseMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -704,7 +728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.25490198}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -741,6 +765,7 @@ GameObject:
   - component: {fileID: 885291788}
   - component: {fileID: 885291787}
   - component: {fileID: 885291786}
+  - component: {fileID: 885291790}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -829,6 +854,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &885291790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885291785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896e378bca63e6f49885e7a93fd110c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameIsPaused: 0
+  pauseMenuCanvas: {fileID: 885291785}
 --- !u!1 &1029355706
 GameObject:
   m_ObjectHideFlags: 0

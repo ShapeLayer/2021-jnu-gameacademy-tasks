@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6353448302414152234}
   - component: {fileID: 6353448302414152235}
+  - component: {fileID: -496237297125494005}
   m_Layer: 0
   m_Name: MapConstructor
   m_TagString: Untagged
@@ -43,6 +44,137 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c4d41e82ab944658b0412cdcfd4129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MapTilePrefab: {fileID: 0}
-  MapTilePrefabs: []
-  ConstructOffset: 0300000003000000
+  TileBridgePrefab: {fileID: 4952197920795500190, guid: 14d1d5b420bc2284a95c3d94e1a295c2, type: 3}
+  BasementTilePrefab: {fileID: 1019455675441034, guid: 1d3e23ba7400b2f44b18083a89dbf53b, type: 3}
+  DebugTilePrefab: {fileID: 1414031302540524, guid: 4539df486ff78ca4fa7acbfea4b59d1d, type: 3}
+--- !u!114 &-496237297125494005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6353448302414152232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4696a79a27b1ce742957cea317730168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Grass:
+  - {fileID: 1813793945200060, guid: 3ca0230551a99bd4888adfa3ff6b141d, type: 3}
+  - {fileID: 1117298983786358, guid: 7547bbda6e3fcf54abfb4829aeb117f2, type: 3}
+  - {fileID: 1438610639889630, guid: 45eaae8fa71a05b4088d5289a88a7ca0, type: 3}
+  - {fileID: 1904004954535062, guid: d79f9a6dadac14b4384b7b1d3ad623bc, type: 3}
+  - {fileID: 1191316042146066, guid: 2ea76128e13face49ab66dd3a928d590, type: 3}
+  - {fileID: 1342260142853984, guid: 57683f730a0f42c489433e2a936559f4, type: 3}
+  - {fileID: 1045193707671112, guid: d41da89831774404c836c645b653b8d8, type: 3}
+  - {fileID: 1260259606543862, guid: 19fc3fc29eb3b084abf8a61cdf719f18, type: 3}
+  - {fileID: 1758328645183962, guid: 3820179290b0bd746875773b8926b10d, type: 3}
+  GrassField:
+  - {fileID: 1609952234303590, guid: 0e0e2907e73bd144b8bc02a529209d91, type: 3}
+  - {fileID: 1234851259961474, guid: 02f6e97ed53e4fb4285cf584207d301f, type: 3}
+  - {fileID: 1951716753827778, guid: e154600a36e99f046b40969736c16339, type: 3}
+  - {fileID: 1019455675441034, guid: 1d3e23ba7400b2f44b18083a89dbf53b, type: 3}
+  - {fileID: 1702083265520768, guid: a5928113a2044b949bb0a94bb11d2b86, type: 3}
+  - {fileID: 1605424963370998, guid: 3570f0447d360b8469767346226b3482, type: 3}
+  - {fileID: 1034527497005906, guid: 45254b78bbe025d48a99ff4fc4f903d3, type: 3}
+  - {fileID: 1380989572783414, guid: f81792cf2cdf7df45bab7b489586e020, type: 3}
+  - {fileID: 1685711078977024, guid: 9c991af820a524f40bbc6e68a7534bba, type: 3}
+  - {fileID: 1963174691519300, guid: ec4603f7852d4e14f83de905e7522bee, type: 3}
+  GrassForest:
+  - {fileID: 1888843406733982, guid: 9e55fe6bd816fcf4c9594e558d975275, type: 3}
+  - {fileID: 1581525267239200, guid: 1bf762bc2ef86d741944ff8a2c077e13, type: 3}
+  - {fileID: 1220498106702670, guid: 0eecf01bcc66b0d40b4094344d1247bf, type: 3}
+  - {fileID: 1234731652501940, guid: b2d01a14d2478294f99f99ef447a7fb2, type: 3}
+  - {fileID: 1623861386974664, guid: fe409701fe4397943ad21de710c1e50a, type: 3}
+  - {fileID: 1014389759488234, guid: 7dcb0c18f9c8d65448a7836fbb48f630, type: 3}
+  - {fileID: 1403235125078782, guid: 1c205ad205fdba24f9d0992fbc5fc739, type: 3}
+  - {fileID: 1881530289166306, guid: 2bc8378797c97c549b3f2ed440ebc29b, type: 3}
+  - {fileID: 1938941430279046, guid: 945dda1fb88763b4584aaab12c62e6c9, type: 3}
+  - {fileID: 1238898998977494, guid: 1a7d875fd2150f54388355947d940a8c, type: 3}
+  GrassGround:
+  - {fileID: 1208976863402712, guid: 89df5013425801441b8e95075973b6dc, type: 3}
+  - {fileID: 1477343631399920, guid: d144388f3d3b0ef4087c8ce3cf628886, type: 3}
+  - {fileID: 1524300602260862, guid: 2b84cc9207708324484031b50556ad79, type: 3}
+  - {fileID: 1013529771848788, guid: eee19ee58875bc944ad91cbc706c79d1, type: 3}
+  - {fileID: 1359448178457206, guid: fd382a389802bbf48abda94542a44eb1, type: 3}
+  - {fileID: 1829274115353754, guid: c6cfaa6ebb2ea9c40bca969a6543a6e8, type: 3}
+  - {fileID: 1199327078294032, guid: 8d5a9a1fd51a53149b074124ee87736f, type: 3}
+  - {fileID: 1697348779136720, guid: 498ffb75ea638a8488f1e89453c81228, type: 3}
+  - {fileID: 1069176966765060, guid: aaaec8e2fec7e6142b26aadf3c90d1aa, type: 3}
+  - {fileID: 1810488558752500, guid: a733ba41f37ca5544a2e7cc6dff67c2b, type: 3}
+  GrassStone:
+  - {fileID: 1131005093672038, guid: 7b67ccc17a7a475478c880fc14711731, type: 3}
+  - {fileID: 1294053799941720, guid: 55f1c9e219a3c8947ba79ce18dd2decf, type: 3}
+  - {fileID: 1611679348050004, guid: 51eba013e386b44489e95c5a41aa7875, type: 3}
+  - {fileID: 1414031302540524, guid: 4539df486ff78ca4fa7acbfea4b59d1d, type: 3}
+  - {fileID: 1813227476357986, guid: c4161c55f3631af489d0ddb29bcdf055, type: 3}
+  - {fileID: 1386421896600750, guid: 7c742d7f6a21eda43b5374c44aea7ff4, type: 3}
+  - {fileID: 1982897912373780, guid: 4af8911b839b87742bf4c37282a237fe, type: 3}
+  - {fileID: 1943078978173128, guid: 959953160b43c694aa482d82e9943768, type: 3}
+  - {fileID: 1928565270423842, guid: 71c63359d514e144486cab190273d78d, type: 3}
+  - {fileID: 1267614673797036, guid: a2abd2c43eed31941a0104c9770dc86f, type: 3}
+  GrassTree:
+  - {fileID: 1114467051303598, guid: d68488c043718fd479f653dbdc4aed0d, type: 3}
+  - {fileID: 1762148069308394, guid: 2f636cdac39f92f4287002cf57f40696, type: 3}
+  - {fileID: 1180490462424202, guid: 794beb83de2dbde4784282f7229b55b3, type: 3}
+  - {fileID: 1740361217603064, guid: eb26f19ed2dee9848be572bf0268cc7c, type: 3}
+  - {fileID: 1550784575410878, guid: de0466024c282d24c9a0ee30eab1c989, type: 3}
+  - {fileID: 1343436752321812, guid: 158fd114ab3487b41a563b3c37612af9, type: 3}
+  - {fileID: 1702566278052770, guid: 233f318450079bc48a104b8fe5316d0e, type: 3}
+  - {fileID: 1088625526674638, guid: 09e701f8a37a9ce49b2f40bf80dd683a, type: 3}
+  - {fileID: 1590559769640494, guid: fc4cc6ec267b4a54495e16797ce59ed6, type: 3}
+  - {fileID: 1423089013035916, guid: 2dc0a4ef018fe7c40a16b55cfd4b1e24, type: 3}
+  GrassWater:
+  - {fileID: 1117169947665572, guid: febdead4c95e97b46b724c12b969b3da, type: 3}
+  - {fileID: 1918140418277012, guid: ceaa611e205c72e4c8a957b87e6cb50d, type: 3}
+  - {fileID: 1173388813405366, guid: 8abfc4cd3f9064b4d9b1b7c5439ae5d1, type: 3}
+  - {fileID: 1001816278375832, guid: 836722a116f77c5488b096a7113c789f, type: 3}
+  - {fileID: 1127368205614844, guid: 877298389d6deb54d87d3f029812deae, type: 3}
+  - {fileID: 1527338251371812, guid: 791c193e2abbf82409d3ba9b7ddc9f3b, type: 3}
+  - {fileID: 1943014564073260, guid: e8452309c12c9634d8e47e1ae212f0c6, type: 3}
+  - {fileID: 1377590517182452, guid: 51f5620c7dbbb554da2f9df58127072d, type: 3}
+  - {fileID: 1088186768494130, guid: 3c38ea72bd01aba4bbbb17a3a4873054, type: 3}
+  - {fileID: 1738034616129894, guid: 43a11e26582b1894b94c2e7013bfea3c, type: 3}
+  MountainField:
+  - {fileID: 768433352039845284, guid: b0c6d5cc9ec82ee41af6f55132ac4c4f, type: 3}
+  - {fileID: 7321964536635150827, guid: d8b52b4ace3617743955905184ef372d, type: 3}
+  - {fileID: 3044801233363816613, guid: ed15cb6aabd06fd4ea0cc314c2ea04b5, type: 3}
+  - {fileID: 6510346074457781249, guid: 2bfa22b7adb01984eb2741ee9d1889f0, type: 3}
+  - {fileID: 4562008769818215437, guid: 27483085ad187464ebb51fcc11f3607d, type: 3}
+  - {fileID: 7847752158835846900, guid: 0d6e02194acae174a939f6d444f8c792, type: 3}
+  - {fileID: 8380465821385983138, guid: 65a6ed963772e50408803a60d3fe74d5, type: 3}
+  - {fileID: 3962396293340009607, guid: 20e9744c263ea67489f96298115ecba4, type: 3}
+  - {fileID: 8539135006780896830, guid: 3bac83f4073b06648be368cca0b0c05c, type: 3}
+  - {fileID: 3246725594278526245, guid: c2b698ab0612bb9408a12f7b01d5c15b, type: 3}
+  MountainGrass:
+  - {fileID: 8396070140832171743, guid: 96b3c5adb9c3ebe438007f6a2a99f874, type: 3}
+  - {fileID: 8384048296773874835, guid: 686c78f76a5850946abacdb2c74b284c, type: 3}
+  - {fileID: 9207060363403179256, guid: 86259062b50e58d44b0c05a6c7ddfd9e, type: 3}
+  - {fileID: 28392849685646478, guid: 4735632da9d833e4eba9319ad829935b, type: 3}
+  - {fileID: 944738292284923355, guid: 8e5da188f3d87a44382023b7e1d777bb, type: 3}
+  - {fileID: 78048470357587246, guid: 9964475f40024514797ac1ad5d6b09ef, type: 3}
+  - {fileID: 6577108063921187901, guid: a8c00138ecc274d4589763d894d6b6cc, type: 3}
+  - {fileID: 2625420403989912224, guid: 77984b8a1563bf7468bbbb5059e73b0f, type: 3}
+  - {fileID: 2866817869942394679, guid: eda470863425db044bfaff1a4a159a17, type: 3}
+  - {fileID: 7162245325011805705, guid: fcef18712e73c9f4798e52010d002653, type: 3}
+  MountainGround:
+  - {fileID: 1779053081177246340, guid: b010dbc74f55ed8448574c355b93ec64, type: 3}
+  - {fileID: 3654387430393156573, guid: af9a7fe8b21524940becb6c6fda4499b, type: 3}
+  - {fileID: 4624401434697633150, guid: 754a457a2aea0684d96877d4f3b55494, type: 3}
+  - {fileID: 5806136446291366337, guid: 4218f06e0ea8b1e488adf32ea310e1bb, type: 3}
+  - {fileID: 6036650111232679478, guid: 3f5a8a4c3de9fe44fa7cf535c229c00e, type: 3}
+  - {fileID: 8871147213635743371, guid: 1e0d1f66cdfd12a4490f52ff3df2703e, type: 3}
+  - {fileID: 3884539243939001509, guid: bdec8cb5431fe6e439ad5c085055e0b5, type: 3}
+  - {fileID: 5104196166742069504, guid: 24722e71690bc204eb3689e557d9f58b, type: 3}
+  - {fileID: 1726304112635864572, guid: 8e16664ccabb6dc4c97f2ecbb32ebec9, type: 3}
+  - {fileID: 300819790265466625, guid: fd4c7495896f6754a9fe23004f97dd68, type: 3}
+  MountainTree:
+  - {fileID: 4866723498738876031, guid: c5d27247319901649802ae7612472a64, type: 3}
+  - {fileID: 6732768295430668072, guid: 1a8923d887690cb4a8030aec2c17c28b, type: 3}
+  - {fileID: 5480850685739888469, guid: e3d158a9f7659a147a3caf65913178c7, type: 3}
+  - {fileID: 3248177747813009954, guid: 00260e64fa8acb74a90561c0ae66cbd3, type: 3}
+  - {fileID: 4267915513514606972, guid: 2094fe511a1eac14a98bbb5d1995ef5d, type: 3}
+  - {fileID: 3977954421151455829, guid: 292307f8272de344c9f276175892f1e2, type: 3}
+  - {fileID: 6525665513236185334, guid: ac74d5250aea344458c45be9bf5840dc, type: 3}
+  - {fileID: 903599055321710056, guid: 8874b6bce802aa246a83a7d78c8c5797, type: 3}
+  - {fileID: 5235203835248484018, guid: 2ec196b1fa4983849b77e129ee112941, type: 3}

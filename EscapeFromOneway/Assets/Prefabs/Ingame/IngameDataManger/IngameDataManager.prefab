@@ -43,8 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10d847eeb53f14ee1ab83fe446323dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex:
-  - 1
-  - 2
-  - 3
   levelID: 1
+  level:
+    type: 
+    path: 
+    length: 0
+    nextLevelID: 0
+  Character:
+    id: 
+    name: 
+    resource: 0

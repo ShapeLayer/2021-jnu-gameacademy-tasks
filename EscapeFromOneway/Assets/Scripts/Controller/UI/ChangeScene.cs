@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
 
-    public void ChangeSceneChallengeLobbyBtn()   //Ã§¸°Áö¸ðµå ·ÎºñÈ­¸é
+    public void ChangeSceneChallengeLobbyBtn()   //Ã§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½È­ï¿½ï¿½
     {
         switch (this.gameObject.name)
         {
@@ -22,7 +22,7 @@ public class ChangeScene : MonoBehaviour
         }
     }
 
-    public void ChangeSceneStageLobbyBtn()   //½ºÅ×ÀÌÁö¸ðµå ·ÎºñÈ­¸é
+    public void ChangeSceneStageLobbyBtn()   //StageMode LobbyScene 
     {
         switch (this.gameObject.name)
         {
@@ -35,10 +35,13 @@ public class ChangeScene : MonoBehaviour
             case "CharacterSelectButton":
                 SceneManager.LoadScene("CharacterSelectUI");
                 break;
+            case "PowerButton":
+                Application.Quit();
+                break;
         }
     }
 
-    public void ChangeSceneChallengeResultBtn() //Ã§¸°Áö¸ðµå °á°úÈ­¸é
+    public void ChangeSceneChallengeResultBtn() //Ã§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È­ï¿½ï¿½
     {
         switch (this.gameObject.name)
         {
@@ -51,23 +54,25 @@ public class ChangeScene : MonoBehaviour
         }
     }
 
-    public void ChangeSceneStageResultBtn() //½ºÅ×ÀÌÁö¸ðµå °á°úÈ­¸é
+    public void ChangeSceneStageResultBtn() // StageMode ResultScene
     {
         switch (this.gameObject.name)
         {
             case "RetryButton":
-                SceneManager.LoadScene("StageIngameUI");
+                IngameDataManager.instance.LoadLevel(IngameDataManager.instance.levelID);
+                GameManager.instance.LoadScene("Ingame");
                 break;
             case "HomeButton":
                 SceneManager.LoadScene("StageLobbyUI");
                 break;
             case "NextStageButton":
-                SceneManager.LoadScene("StageIngameUI");
+                IngameDataManager.instance.LoadLevel(IngameDataManager.instance.level.nextLevelID);
+                GameManager.instance.LoadScene("Ingame");
                 break;
         }
     }
 
-    public void ChangeSceneChallengeIngameBtn()  //Ã§¸°Áö¸ðµåÀÎ°ÔÀÓ È­¸é
+    public void ChangeSceneChallengeIngameBtn()  //Ã§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½ È­ï¿½ï¿½
     {
         switch (this.gameObject.name)
         {
@@ -86,7 +91,7 @@ public class ChangeScene : MonoBehaviour
         }
     }
 
-    public void ChangeSceneStageIngameBtn()  //½ºÅ×ÀÌÁö¸ðµåÀÎ°ÔÀÓ È­¸é
+    public void ChangeSceneStageIngameBtn()  //StageMode Ingame Scene 
     {
         switch (this.gameObject.name)
         {
@@ -100,12 +105,13 @@ public class ChangeScene : MonoBehaviour
 
                 break;
             case "PauseButton":
-                SceneManager.LoadScene("StagePauseMenuUI");
+                   SceneManager.LoadScene("StagePauseMenuUI", LoadSceneMode.Additive);
+                   Time.timeScale = 0;
                 break;
         }
     }
 
-    public void ChangeSceneChallengePauseMenuBtn()  //Ã§¸°Áö¸ðµå ÀÏ½ÃÁ¤Áö¸Þ´º
+    public void ChangeSceneChallengePauseMenuBtn()  //Ã§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ´ï¿½
     {
         switch (this.gameObject.name)
         {
@@ -121,18 +127,19 @@ public class ChangeScene : MonoBehaviour
         }
     }
 
-    public void ChangeSceneStagePauseMenuBtn()  //½ºÅ×ÀÌÁö¸ðµå ÀÏ½ÃÁ¤Áö¸Þ´º
+    public void ChangeSceneStagePauseMenuBtn()  //StageMode PauseMenu 
     {
         switch (this.gameObject.name)
         {
             case "PlayButton":
-                SceneManager.LoadScene("StageIngameUI");
+                SceneManager.UnloadSceneAsync("StagePauseMenuUI");
+                Time.timeScale = 1;
                 break;
             case "HomeButton":
                 SceneManager.LoadScene("StageLobbyUI");
                 break;
             case "RetryButton":
-                SceneManager.LoadScene("StageIngameUI");
+                SceneManager.LoadScene("Ingame");
                 break;
             case "StageSelectButton":
                 SceneManager.LoadScene("StageSelectUI");
@@ -140,13 +147,12 @@ public class ChangeScene : MonoBehaviour
         }
     }
 
-    public void ChangeSceneStageSelectBtn() //½ºÅ×ÀÌÁö¼±ÅÃ
+    public void ChangeSceneStageSelectBtn() //Stege Select
     {
         switch (this.gameObject.name)
         {
             case "Stage1Button":
                 SceneManager.LoadScene("CharacterControl");
-                //SceneManager.LoadScene("StageIngameUI");
                 break;
             case "Stage2Button":
                 SceneManager.LoadScene("StageIngameUI");
@@ -158,7 +164,7 @@ public class ChangeScene : MonoBehaviour
         }
     }
 
-    public void ChangeSceneModeChangeBtn()  //¸ðµå¼±ÅÃ È­¸é
+    public void ChangeSceneModeChangeBtn()  //ï¿½ï¿½å¼±ï¿½ï¿½ È­ï¿½ï¿½
     {
         switch (this.gameObject.name)
         {
@@ -169,5 +175,20 @@ public class ChangeScene : MonoBehaviour
                 SceneManager.LoadScene("ChallengeLobbyUI");
                 break;
         }
+    }
+
+    public void CharacterSelectUI() //Character Select
+    {
+        switch (this.gameObject.name)
+        {
+            case "HomeButton":
+                SceneManager.LoadScene("StageLobbyUI");
+                break;
+        }
+    }
+
+    public void HomeButtonTrigger()
+    {
+        SceneManager.LoadScene("StageLobbyUI");
     }
 }

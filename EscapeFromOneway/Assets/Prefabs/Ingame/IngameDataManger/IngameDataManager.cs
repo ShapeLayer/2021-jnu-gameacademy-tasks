@@ -28,8 +28,8 @@ public class IngameDataManager : MonoBehaviour
     public void SetLevel(Level Level) { level = Level; }
     public void LoadLevel()
     {
-        level = PresetController.LoadJsonToObject(
-            Path.Combine(PathVariables.LevelDir, $"{levelID}.json")
+        level = AssetLoader.LoadJsonToObject(
+            Path.Combine(ResourceVariables.LevelDir, levelID)
         ).ToObject<Level>();
     }
     public void LoadLevel(string LevelID) { levelID = LevelID; LoadLevel(); }

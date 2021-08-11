@@ -1,70 +1,135 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MapConstructor : MonoBehaviour
 {
-    public GameObject MapTilePrefab;
-    public GameObject[] MapTilePrefabs;
-    public int[] ConstructOffset = {3, 3};
+    // Assosiates with instantiate tile.
+    public GameObject TileBridgePrefab;
+    public GameObject BasementTilePrefab; // Todo
+    public GameObject DebugTilePrefab;
 
-    // GeneratePath
-    List<int> pathGen;
+    // Assosiates with sprite rendering.
+    int sortingOrder = 0;
+
+    // Assosiates with limiting construct tile.
+    int xStack = 0;
+    int yStack = 0;
+    int indexer = 0;
+    List<int> path;
+
+    // Assosiates with pointing construct tile.
+    int[] constructPointer = {0, 0};
+    bool isConstructedBasement = false;
+
+    // Assosiates with type of map.
+    string mapType;
 
     void Start()
     {
-        IngameDataManager.instance.DebugSetLevelID();
         IngameDataManager.instance.LoadLevel();
-        ConstructMap();
+        mapType = IngameDataManager.instance.level.type;
+        if (mapType == "determined") path = IngameDataManager.instance.level.path;
+    }
+    void Update()
+    {
+        if (mapType == "determined") ConstructPathHandler();
+        else if (mapType == "random") ConstructRandomHandler();
+    }
+    public void ConstructTile(GameObject TilePrefab, Vector2 Position, int SortingOrder, string Type = "normal")
+    {
+        ConstructTile(TilePrefab, Position, SortingOrder, Type, MapConstructorConfig.DefaultParentGameObjectName);
+    }
+    public void ConstructTile(GameObject TilePrefab, Vector2 Position, int SortingOrder, string Type, string ParentName)
+    {
+        GameObject newObject = Instantiate(TileBridgePrefab) as GameObject;
+        TileBridgeController tileBridgeController = newObject.GetComponent<TileBridgeController>();
+        newObject.GetComponent<RectTransform>().position = Position;
+        newObject.transform.SetParent(GameObject.Find(ParentName).transform);
+        tileBridgeController.Init(TilePrefab);
+        if (Type != "normal") tileBridgeController.ChangeConstantState(Type);
+        tileBridgeController.TileObject.GetComponent<SpriteRenderer>().sortingOrder = SortingOrder;
     }
 
-    void Update() {}
+    void ConstructPointerHandler(int tile)
+    {
+        // Forward
+        if (tile == 0)
+        {
+            constructPointer[1]++;
+            sortingOrder--;
+        }
+        else if (tile == 1) constructPointer[0]++; // Right
+        // Backward
+        else if (tile == 2) 
+        {
+            constructPointer[1]--;
+            sortingOrder++;
+        }
+        else if (tile == 3) constructPointer[0]--; // Left
+    }
+    public void ConstructPathHandler()
+    {
+        // Construct Start(Base Camp) Tile
+        if (!isConstructedBasement)
+        {
+            isConstructedBasement = true;
+            sortingOrder--;
+            ConstructTile(BasementTilePrefab, new Vector2(0, 0), sortingOrder, "init");
+        }
 
-    public List<int> GeneratePath(int length) { return GeneratePath(length, MapConstructorConfig.CanGenBackwardPath); }
-    public List<int> GeneratePath(int length, bool CanGenBackwardPath)
-    {
-        pathGen = new List<int>();
-        pathGen.Add(0);
-        for (int i = 1; i < length; i++)
+        int length = path.Count;
+        // Processing Path
+        while (indexer < length && CheckBreakPoint(path[indexer]))
         {
-            int val;
-            do
-            {
-                if (CanGenBackwardPath) val = UnityEngine.Random.Range(0, 4);
-                else val = UnityEngine.Random.Range(0, 3);
-            } while (Math.Abs(val - pathGen[i-1]) == 2);
-            pathGen.Add(val);
-        }
-        return pathGen;
-    }
-    [ContextMenu("Debug Generate Path")]
-    public void DebugGeneratePath() 
-    {
-        foreach (var p in GeneratePath(10, true))
-        {
-            print(p);
-        }
-    }
-    
-    [ContextMenu("Construct Map")]
-    public void ConstructMap()
-    {
-        int[] ConstructPointer = {0, 0};
-        int tileCount = 0;
-        foreach(int tile in IngameDataManager.instance.level.path)
-        {
-            if (tile == 0) ConstructPointer[1]++;  // Forward
-            else if (tile == 1) ConstructPointer[0]++; // Right
-            else if (tile == 2) ConstructPointer[1]--; // Backward
-            else if (tile == 3) ConstructPointer[0]--; // Left
-            GameObject newObject = Instantiate(MapTilePrefab) as GameObject;
-            newObject.GetComponent<Transform>().position = new Vector2(
-                ConstructPointer[0] * ConstructOffset[0], ConstructPointer[1] * ConstructOffset[1]
+            int tile = path[indexer];
+            UpdateBreakPoint("constructor", tile);
+            ConstructPointerHandler(tile);
+            ConstructTile(
+                DebugTilePrefab,
+                new Vector2(constructPointer[0] * GameConstructorConfig.TileSizeOffset, constructPointer[1] * GameConstructorConfig.TileSizeOffset),
+                sortingOrder
             );
-            newObject.GetComponent<SpriteRenderer>().sortingOrder = tileCount;
-            newObject.transform.SetParent(GameObject.Find("MapObjects").transform);
-            tileCount--;
+            indexer++;
+        }
+        if (indexer == length)
+        {
+            ConstructPointerHandler(path[indexer-1]);
+            ConstructTile(
+                BasementTilePrefab, 
+                new Vector2(constructPointer[0] * GameConstructorConfig.TileSizeOffset, constructPointer[1] * GameConstructorConfig.TileSizeOffset),
+                sortingOrder,
+                "finish"
+            );
+            indexer++;
+        }
+    }
+
+    public void ConstructRandomHandler()
+    {}
+    
+    bool CheckBreakPoint(int tile)
+    {
+        // Vertical
+        if (tile % 2 == 0) return yStack <= MapConstructorConfig.yStackLimit && yStack >= MapConstructorConfig.yStackLimit * -1;
+        // Horizontal
+        else return xStack <= MapConstructorConfig.xStackLimit && xStack >= MapConstructorConfig.xStackLimit * -1;
+    }
+    public void UpdateBreakPoint(string updater, int tile)
+    {
+        if (updater == "player")
+        {
+            if (tile == 0) yStack--;
+            else if (tile == 1) xStack--;
+            else if (tile == 2) yStack++;
+            else if (tile == 3) xStack++;
+        }
+        else if (updater == "constructor")
+        {
+            if (tile == 0) yStack++;
+            else if (tile == 1) xStack++;
+            else if (tile == 2) yStack--;
+            else if (tile == 3) xStack--;
         }
     }
 }

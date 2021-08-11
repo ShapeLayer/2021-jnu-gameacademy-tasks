@@ -11,35 +11,24 @@ public class UserDataManager : MonoBehaviour
     public static UserDataManager instance = null;
     public UserData UserData;
 
-    public bool CheckBinaryStorageIsExisted() { return File.Exists(PathVariables.UserDataBinaryStorage); }
-    public void InitializeBinaryStorage() { if (!CheckBinaryStorageIsExisted()) File.Create(PathVariables.UserDataBinaryStorage); }
+    public bool CheckBinaryStorageIsExisted()
+    {
+        if (!Directory.Exists(PathVariables.UserDataBinaryStorageDir)) Directory.CreateDirectory(PathVariables.UserDataBinaryStorageDir);
+        return File.Exists(PathVariables.UserDataBinaryStorage);
+    }
+    public void InitializeBinaryStorage()
+    {
+        if (!CheckBinaryStorageIsExisted()) File.Create(PathVariables.UserDataBinaryStorage).Close();
+    }
 
     public void SaveUserDataToBinaryStorage()
     {
-        using (
-            BinaryWriter writer = new BinaryWriter(
-                File.Open(
-                    PathVariables.UserDataBinaryStorage, FileMode.Create
-                )
-            )
-        )
-        {
-            writer.Write(
-                JsonConvert.SerializeObject(UserData)
-            );
-        }
+        InitializeBinaryStorage();
+        File.WriteAllText(PathVariables.UserDataBinaryStorage, JsonConvert.SerializeObject(UserData));
     }
     public void LoadUserDataFromBinaryStorage() {
-        using (
-            BinaryReader reader = new BinaryReader(
-                File.Open(
-                    PathVariables.UserDataBinaryStorage, FileMode.Open
-                )
-            )
-        )
-        {
-            UserData = JObject.Parse(reader.ReadString()).ToObject<UserData>();
-        }
+        InitializeBinaryStorage();
+        UserData = PresetController.LoadJsonToObject(PathVariables.UserDataBinaryStorage).ToObject<UserData>();
     }
 
     void Awake()

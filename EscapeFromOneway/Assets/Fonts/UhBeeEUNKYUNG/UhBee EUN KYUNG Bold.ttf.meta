@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ec138ed3c8169854ea9dc6e624da5cdf
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - UhBee EUN KYUNG
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e3e44b856495fb048a460ec5e32cd2d0, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

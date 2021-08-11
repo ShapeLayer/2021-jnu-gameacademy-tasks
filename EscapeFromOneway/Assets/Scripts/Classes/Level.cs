@@ -9,6 +9,7 @@ public class Level
     public LevelConfig config;
     public List<int> path;
     public int length;
+    public string nextLevelID;
 }
 
 public class LevelConfig

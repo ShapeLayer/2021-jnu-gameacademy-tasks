@@ -142,6 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPrefabDinoidle: {fileID: 7582875488872704290, guid: 0b61b9dd5f388ff47b3607b9457a00be, type: 3}
   PlayerPrefabSquirrelidle: {fileID: 6304070939600878507, guid: b7af540b361f0c342b098670cd1fc7da, type: 3}
+  PlayerPrefabDogidle: {fileID: 5855795200647511182, guid: 655500d5c50af804ba9ed53ca12dabdc, type: 3}
+  PlayerPrefabSpacelingidle: {fileID: 5562306230257729825, guid: b010a41eb1c9e744e95752e2e601d5c4, type: 3}
 --- !u!1 &118115170
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 845329767658873331, guid: c2fd0691f0fba214ca3c84589417d3db, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeSceneChallengeResultBtn
+      value: CharacterSelectUI
       objectReference: {fileID: 0}
     - target: {fileID: 845329767658873331, guid: c2fd0691f0fba214ca3c84589417d3db, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -766,6 +768,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPrefabDinoidle: {fileID: 7582875488872704290, guid: 0b61b9dd5f388ff47b3607b9457a00be, type: 3}
   PlayerPrefabSquirrelidle: {fileID: 6304070939600878507, guid: b7af540b361f0c342b098670cd1fc7da, type: 3}
+  PlayerPrefabDogidle: {fileID: 5855795200647511182, guid: 655500d5c50af804ba9ed53ca12dabdc, type: 3}
+  PlayerPrefabSpacelingidle: {fileID: 5562306230257729825, guid: b010a41eb1c9e744e95752e2e601d5c4, type: 3}
 --- !u!4 &1304701125
 Transform:
   m_ObjectHideFlags: 0
@@ -1029,6 +1033,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPrefabDinoidle: {fileID: 7582875488872704290, guid: 0b61b9dd5f388ff47b3607b9457a00be, type: 3}
   PlayerPrefabSquirrelidle: {fileID: 6304070939600878507, guid: b7af540b361f0c342b098670cd1fc7da, type: 3}
+  PlayerPrefabDogidle: {fileID: 5855795200647511182, guid: 655500d5c50af804ba9ed53ca12dabdc, type: 3}
+  PlayerPrefabSpacelingidle: {fileID: 5562306230257729825, guid: b010a41eb1c9e744e95752e2e601d5c4, type: 3}
 --- !u!1 &2083119985
 GameObject:
   m_ObjectHideFlags: 0

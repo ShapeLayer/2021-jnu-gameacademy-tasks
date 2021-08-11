@@ -43,3 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8f0ca0911554d2584a89c1e6c24ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterSelect: Dino
+  GameResult: 
+  direction: 1000000
